@@ -9,6 +9,13 @@ body {
 .user-card-full {
     overflow: hidden;
 }
+.btn{
+    border-radius: 20px!important;
+    /* margin-left: 5%; */
+}
+.userform{
+    margin-left: 5%;
+}
 
 .card {
     border-radius: 5px;
@@ -40,6 +47,10 @@ body {
 .user-profile {
     padding: 20px 0;
 }
+.userlogo{
+    display: flex;
+    height: 90px;
+}
 
 .card-block {
     padding: 1.25rem;
@@ -51,9 +62,12 @@ body {
 
 .img-radius {
     border-radius: 5px;
+    height: 200%;
 }
 
-
+#wl-p{
+    margin-top: 15%;
+}
 
 h6 {
     font-size: 14px;
@@ -137,10 +151,10 @@ p {
 }
 
 
-#btn-edit{
+/* .btn{
     margin-left: 30%;
 
-}
+} */
 
 #link1{
     margin-left: 10%;

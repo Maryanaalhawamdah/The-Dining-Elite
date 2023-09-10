@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminResturantController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\ResturantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes

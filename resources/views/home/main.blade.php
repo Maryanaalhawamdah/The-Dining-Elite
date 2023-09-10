@@ -110,20 +110,19 @@
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
                   <h3>Birthday Parties</h3>
                   <div class="price">
-                    <p><span>$189</span></p>
+                    <p><span></span></p>
                   </div>
                   <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                    Planning a birthday event can be a fun and memorable experience.
+                    Remember that the key to a successful birthday event is thoughtful planning and creating an atmosphere that reflects the personality and interests of the birthday person.
                   </p>
                   <ul>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                    <li><i class="bi bi-check-circled"></i>You can choose your best time .</li>
+                    <li><i class="bi bi-check-circled"></i>You can choose your guests .</li>
+                    <li><i class="bi bi-check-circled"></i>You can choose Decoration. </li>
                   </ul>
                   <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                    
                   </p>
                 </div>
               </div>
@@ -137,20 +136,19 @@
                 <div class="col-lg-6 pt-4 pt-lg-0 content">
                   <h3>Private Parties</h3>
                   <div class="price">
-                    <p><span>$290</span></p>
+                    <p><span></span></p>
                   </div>
                   <p class="fst-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
+                    Private parties are events organized for a select group of individuals, often friends, family members, or a specific social circle. These events are typically not open to the general public and are organized for various occasions and celebrations.<br>
+                    here is a list of these events:
                   </p>
                   <ul>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                    <li><i class="bi bi-check-circled"></i> Anniversary Parties.</li>
+                    <li><i class="bi bi-check-circled"></i> Engagement Parties.</li>
+                    <li><i class="bi bi-check-circled"></i> Graduation Parties.</li>
                   </ul>
                   <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                    
                   </p>
                 </div>
               </div>
@@ -165,16 +163,14 @@
                   <h3>Custom Parties</h3>
                   <br><br>
                   <p class="fst-italic">
-                    you won't have to wait for a table at your favorite restaurant. Book now and skip the wait!"
-                  </p>
+                    Custom parties offer the opportunity to create a one-of-a-kind experience that reflects the individuality and passions of the person being celebrated. Personal touches and attention to detail are key to making these events truly special.                  </p>
                   <ul>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+                    <li><i class="bi bi-check-circled"></i> Plan a moment for speeches, toasts, or heartfelt messages to celebrate the guest of honor and their achievements..</li>
+                    <li><i class="bi bi-check-circled"></i> </li>
+                    <li><i class="bi bi-check-circled"></i></li>
                   </ul>
                   <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur
+                   
                   </p>
                 </div>
               </div>

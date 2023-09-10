@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\softDeletes;
 
-
-class Admin extends Model
+class AdminResturant extends Model
 {
     use HasFactory;
     use softDeletes;
     protected $softDelete = true;
 
-    protected $table = 'admins';
+    protected $table = 'resturants';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'description', 'image', 'number_of_tables'];
 }

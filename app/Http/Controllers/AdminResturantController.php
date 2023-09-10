@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Models\AdminResturant;
 use Illuminate\Http\Request;
-use App\Models\softDeletes;
 
-class AdminController extends Controller
+class AdminResturantController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $Admins = Admin::all();
-        return view ('admin.sidebar.admin')->with('Admins', $Admins);
+        $Resturants = AdminResturant::all();
+        return view ('admin.sidebar.resturant')->with('Resturants', $Resturants);
     }
 
     /**
@@ -26,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.add.admin');
+        return view('admin.add.resturant');
     }
 
     /**
@@ -38,59 +37,59 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Admin::create($input);
-        return redirect('Admin')->with('flash_message', 'Admin Addedd!'); 
+        AdminResturant::create($input);
+        return redirect('Resturant')->with('flash_message', 'Resturant Addedd!'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminResturant  $adminResturant
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(AdminResturant $adminResturant,  $id)
     {
-        $Admin = Admin::onlyTrashed()->get();
-        return view('Admin.softdelete' , compact('Admin'));
-        return $Admin;
+        $Resturant = AdminResturant::onlyTrashed()->get();
+        return view('Resturant.softdelete' , compact('Resturant'));
+        return $Resturant;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminResturant  $adminResturant
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $Admin = Admin::find($id);
-        return view('admin.edit.user')->with('Admins', $Admin);
+        $Resturant = AdminResturant::find($id);
+        return view('admin.edit.resturant')->with('resturant', $Resturant);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminResturant  $adminResturant
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $Admin = Admin::find($id);
+        $Resturant = AdminResturant::find($id);
         $input = $request->all();
-        $Admin->update($input);
-        return redirect('admin.sidebar.admin')->with('flash_message', 'Admin Updated!'); 
+        $Resturant->update($input);
+        return redirect('admin.sidebar.resturant')->with('flash_message', 'Resturant Updated!'); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminResturant  $adminResturant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(AdminResturant $adminResturant, $id)
     {
-        Admin::destroy($id);
-        return redirect()->route('admin.sidebar.admin');
+        AdminResturant::destroy($id);
+        return redirect()->route('admin.sidebar.Resturant');
     }
 }

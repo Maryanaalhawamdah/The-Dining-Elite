@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Models\AdminUser;
 use Illuminate\Http\Request;
-use App\Models\softDeletes;
 
-class AdminController extends Controller
+class AdminUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $Admins = Admin::all();
-        return view ('admin.sidebar.admin')->with('Admins', $Admins);
+        $Users = AdminUser::all();
+        return view ('admin.sidebar.user')->with('Users', $Users);
     }
 
     /**
@@ -26,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.add.admin');
+        return view('admin.add.user');
     }
 
     /**
@@ -38,59 +37,59 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Admin::create($input);
-        return redirect('Admin')->with('flash_message', 'Admin Addedd!'); 
+        AdminUser::create($input);
+        return redirect('User')->with('flash_message', 'User Addedd!'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(AdminUser $adminUser, $id)
     {
-        $Admin = Admin::onlyTrashed()->get();
-        return view('Admin.softdelete' , compact('Admin'));
-        return $Admin;
+        $User = AdminUser::onlyTrashed()->get();
+        return view('User.softdelete' , compact('User'));
+        return $User;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $Admin = Admin::find($id);
-        return view('admin.edit.user')->with('Admins', $Admin);
+        $User = AdminUser::find($id);
+        return view('admin.edit.user')->with('Users', $User);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,  $id)
     {
-        $Admin = Admin::find($id);
+        $User = AdminUser::find($id);
         $input = $request->all();
-        $Admin->update($input);
-        return redirect('admin.sidebar.admin')->with('flash_message', 'Admin Updated!'); 
+        $User->update($input);
+        return redirect('admin.sidebar.user')->with('flash_message', 'User Updated!'); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  \App\Models\AdminUser  $adminUser
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy(AdminUser $adminUser, $id)
     {
-        Admin::destroy($id);
-        return redirect()->route('admin.sidebar.admin');
+        AdminUser::destroy($id);
+        return redirect()->route('admin.sidebar.user');
     }
 }

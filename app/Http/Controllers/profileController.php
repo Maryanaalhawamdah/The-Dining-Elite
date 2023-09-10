@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\Profile;
 
@@ -18,11 +18,12 @@ class profileController extends Controller
 
 
 
-    public function index()
+    public function index($id)
     {
-        $users = Profile::all();
-        return view('user.index')->with('user', $users);
+        $users = Profile::find($id);
+        return view('user.index')->compact('user', $users);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -66,10 +67,16 @@ class profileController extends Controller
      * param  int  $id
      * return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        $users = Profile::find($id);
-        return view('user.edit')->with('user', $users);
+        // dd($request);
+        $users = Profile::find($request->id);
+        // dd($users);
+        $users->name=$request->name;
+        $users->email=$request->email;
+        $users->password=$request->password;
+        $users->update();
+        return view('user.index')->with('user', $users);
     }
 
     /**

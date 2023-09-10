@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminRoutingController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminResturantController;
+use App\Http\Controllers\profileController;
 
 
 /*
@@ -145,4 +146,7 @@ Route::get('/resturants','Page' )->name('Page');
 });
 
 Route::get("/resdetail/{id}",[ResturantController::class,'Pagedetail']);
+
+Route::resource('user', profileController::class);
+Route::post('edit', [profileController::class,'edit'])->name('edit');
 

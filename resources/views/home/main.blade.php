@@ -1,8 +1,5 @@
+@extends('home.masterpage')
 
-@include('home.navbar')
-@extends('home.footer')
-@section('contentnav')
-@endsection
 <body>
 
 
@@ -17,7 +14,7 @@
 
           <div class="btns">
             <a href="/resturants" class="btn-book animated fadeInUp scrollto">Discover Now</a>
-            <a href="/book" class="btn-book animated fadeInUp scrollto">Book a Table</a>
+            <a a href="{{ Auth::check() ? '/book' : '/register' }}"  class="btn-book animated fadeInUp scrollto">Book a Table</a>
           </div>
         </div>
 
@@ -184,7 +181,7 @@
             </div><!-- End testimonial item -->
 
           </div>
-          <div class="swiper-pagination"></div>
+          <div  style="margin-top:-15%"class="swiper-pagination"></div>
         </div>
 
       </div>

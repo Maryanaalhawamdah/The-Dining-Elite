@@ -36,28 +36,34 @@
     <header id="header" class="fixed-top d-flex align-items-center justify-content-lg-between">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-lg-between">
             <a href="main"><img class="logo" src="/images/test1.png"></a>
-            <!-- Uncomment below if you prefer to use an image logo -->
-            <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
 
-            <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="/main">Home</a></li>
-                    <li><a class="nav-link scrollto" href="/about">About</a></li>
-                    <li class="dropdown"><a href="#"><span>Restaurant</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
+            <!-- Mobile Menu Toggle Button -->
+            <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-list mobile-nav-toggle" style="margin-left:150px"></i>
+            </button>
 
-                                @foreach($resturants as $resturant)
-                                    <li> <a href="{{url('resdetail',$resturant->id)}}">{{ $resturant->name }}</a></li>
-                                @endforeach
-                                <li><a href="/resturants">more restaurant</a></li>
-                            </ul>
-
-                    <li><a class="nav-link scrollto" href="#contact">Contact us</a></li>
+            <!-- Navigation Links (Desktop) -->
+            <nav id="navbar" class="navbar order-last order-lg-0 d-none d-lg-block">
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link scrollto active" href="/main">Home</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="/about">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="restaurantDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Restaurant
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="restaurantDropdown">
+                            @foreach($resturants as $resturant)
+                                <li class="nav-item"> <a class="nav-link" href="{{url('resdetail',$resturant->id)}}">{{ $resturant->name }}</a></li>
+                            @endforeach
+                            <li class="nav-item"><a class="nav-link" href="/resturants">more restaurant</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact us</a></li>
                 </ul>
-            <!-- .navbar -->
+            </nav>
 
-            <!-- أضف أيقونة المستخدم مع القائمة المنسدلة -->
-            <div class="dropdown">
+            <!-- User Dropdown (Desktop) -->
+            <div class="dropdown d-none d-lg-block">
                 <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user white-icon"></i>
                 </a>
@@ -89,11 +95,9 @@
                     @endguest
                 </ul>
             </div>
-</nav>
-            <a href="/book" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a>
 
         </div>
-    </header><!-- End Header -->
+    </header>
 
     @yield('contentnav')
 

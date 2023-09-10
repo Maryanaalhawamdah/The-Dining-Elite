@@ -52,6 +52,11 @@ Route::get('/a', function () {
     return view('admin.About');
 });
 
+Route::get('/master', function () {
+    return view('home.masterpage');
+});
+
+
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
@@ -74,6 +79,10 @@ Route::get('/resturants','Page' )->name('Page');
 
 Route::get("/resdetail/{id}",[ResturantController::class,'Pagedetail']);
 
+Route::get("/bookdet/{id}",[ReservationController::class,'index'])->name('det');;
+
+
 Route::resource('user', profileController::class);
 Route::post('edit', [profileController::class,'edit'])->name('edit');
+
 

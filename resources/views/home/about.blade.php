@@ -1,8 +1,5 @@
 
-@include('home.navbar')
-@extends('home.footer')
-@section('contentnav')
-@endsection
+@extends('home.masterpage')
 <body>
 
 

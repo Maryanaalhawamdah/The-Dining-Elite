@@ -1,13 +1,4 @@
-/**
-* Template Name: Restaurantly - v3.1.0
-* Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 body {
   font-family: "Open Sans", sans-serif;
   background: #0c0b09;
@@ -196,6 +187,8 @@ h1, h2, h3, h4, h5, h6 {
 */
 .navbar {
   padding: 0;
+    z-index: 1000;
+
 }
 
 .navbar ul {
@@ -307,6 +300,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 991px) {
   .mobile-nav-toggle {
     display: block;
+    margin-right: 100%;
   }
   .navbar ul {
     display: none;

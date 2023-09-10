@@ -15,11 +15,14 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index():View
+    public function index($id)
     {
-        $reservations = Reservation::all();
-        return view ('home.show')->with('reservations',$reservations);
+        $reservations = Reservation::find($id);
+        return view('home.reservation.bookdet', compact('reservations'));
+
+
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,65 +40,21 @@ class ReservationController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-        public function store(Request $request)
+
+  public function store(Request $request)
         {
-            Reservation::create([
-                // "Database Colum"=>"Request Input",
-                "name" => $request->name,
-                "email" => $request->email,
-                "phone" => $request->phone,
-                "res_date"=>$request->date,
-               "guest_number"=>$request->people,
-               "restaurant"=>$request->restaurant,
-               "message"=>$request->message
+                $reservation = Reservation::create([
+                    "name" => $request->name,
+                    "email" => $request->email,
+                    "phone" => $request->phone,
+                    "res_date" => $request->date,
+                    "guest_number" => $request->people,
+                    "restaurant" => $request->restaurant,
+                    "message" => $request->message
+                ]);
 
-            ]);
-            return redirect('main')->with('flash_message', ' Addedd!');
-        }
+                // Redirect to the 'bookingdetail' route with the newly created reservation's id
+                return redirect()->route('det', ['id' => $reservation->id])->with('flash_message', 'Added!');
+            }
 
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Reservation $reservation)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Reservation  $reservation
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Reservation $reservation)
-    {
-        //
-    }
 }

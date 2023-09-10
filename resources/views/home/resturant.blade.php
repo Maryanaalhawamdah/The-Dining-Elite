@@ -1,6 +1,6 @@
+<base href="/public">
+@extends('home.masterpage')
 
-@include('home.navbar')
-@extends('home.footer')
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +43,7 @@
     </style>
 </head>
 <body>
-<section>
+<section style="margin-top: 12%">
 
 
             </div>

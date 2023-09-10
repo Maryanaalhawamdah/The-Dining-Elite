@@ -6,7 +6,6 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
-
 .container1{
     top: 0;
     right: 0;
@@ -14,14 +13,12 @@ body {
     left: 0;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:  1fr;
     width: 600px;
     height: 450px;
     background-color:none;
     border-radius: 10px ;
     border: #cda45e 2px solid;
-    margin-top:12%
-
 }
 
 img{
@@ -49,8 +46,8 @@ img{
     margin-bottom: 25px;
 }
 
-#description {
-    font-size: 14px;
+#text1 {
+    font-size: 18px;
     color: hsl(228, 12%, 48%);
     line-height: 1.5;
     margin-bottom: 5px;
@@ -73,7 +70,9 @@ img{
     color: hsl(228, 12%, 48%);
     text-decoration: line-through;
 }
-
+p{
+    font-size: 20px;
+}
 .cart-btn {
     display: flex;
     justify-content: center;
@@ -88,8 +87,7 @@ img{
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     transition: background-color 0.2s;
-    margin-top: 50%;
-    position:sticky;
+
      padding: 8px 25px;
      text-transform: uppercase;
       font-size: 13px;
@@ -110,13 +108,15 @@ img{
 
 @media only screen and (max-width: 767px) {
 
+  body{
+
+  }
     .container1{
       grid-template-columns: 1fr;
       width: 345px;
       height: 610px;
-      margin-top: 35%;
+      margin-top: 90%;
     }
-
 
     img{
         height: 240px;
@@ -140,29 +140,66 @@ img{
     .cart-btn {
         height: 48px;
     }
-  }</style>
+  }
+  /* Add your existing styles here */
 
-<body >
+@media only screen and (max-width: 767px) {
 
 
-    <body>
+    body{
+        margin-top:-50%;
+    }
+    .container1 {
+        grid-template-columns: 1fr;
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+    }
+
+    #perfume {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    #header {
+        font-size: 24px;
+    }
+
+    #text1 {
+        font-size: 16px;
+    }
+
+    .cart-btn {
+        height: 48px;
+    }
+}
+</style>
+    <body>@section('content')
+
         <div class="container1">
-          <div class="left-side">
-            <img src="{{ $resturants->image}}">
-          </div>
-          <div class="right-side">
-            <p id="perfume">{{$resturants->location}}</p>
-            <h1 id="header">{{$resturants->name}}</h1>
-            <p id="description"> {{$resturants->description}}</p>
-            <div class="price">
+            <div class="right-side">
+                <p id="perfume">Thank You for Booking</p>
+                <h1 id="header">{{ $reservations->name }}</h1>
+                <p id="text1">{{ $reservations->email }} has made a reservation</p>
+                <p id="text1">Reservation Date: {{ $reservations->res_date }}</p>
+                <p id="text1">Reserved Restaurant: {{ $reservations->restaurant }}</p>
+                <p id="text1">Number of Guests: {{ $reservations->guest_number }}</p>
+                <p id="text1">Note: {{ $reservations->message }}</p>
 
             </div>
-            <a href="{{ Auth::check() ? '/book' : '/register' }}">
-                <button class="cart-btn">Book Now</button>
-            </a>
 
 
-
-          </div>
         </div>
 
+
+
+        </div>
+        @endsection

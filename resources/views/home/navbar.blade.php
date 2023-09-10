@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>The Dinning Elite</title>
+    <title>Restaurantly Bootstrap Template - Index</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <!-- Favicons -->
@@ -38,25 +38,26 @@
             <a href="main"><img class="logo" src="/images/test1.png"></a>
             <!-- Uncomment below if you prefer to use an image logo -->
             <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
-
             <nav id="navbar" class="navbar order-last order-lg-0">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="/main">Home</a></li>
-                    <li><a class="nav-link scrollto" href="/about">About</a></li>
-                    <li class="dropdown"><a href="#"><span>Restaurant</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-
-                                @foreach($resturants as $resturant)
-                                    <li> <a href="{{url('resdetail',$resturant->id)}}">{{ $resturant->name }}</a></li>
-                                @endforeach
-                                <li><a href="/resturants">more restaurant</a></li>
-                            </ul>
-
-                    <li><a class="nav-link scrollto" href="#contact">Contact us</a></li>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link scrollto active" href="/main">Home</a></li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="/about">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="restaurantDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Restaurant </i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="restaurantDropdown">
+                            @foreach($resturants as $resturant)
+                                <li class="nav-item"> <a class="nav-link" href="{{url('resdetail',$resturant->id)}}">{{ $resturant->name }}</a></li>
+                            @endforeach
+                            <li class="nav-item"><a class="nav-link" href="/resturants">more restaurant</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link scrollto" href="#contact">Contact us</a></li>
                 </ul>
-            <!-- .navbar -->
 
-            <!-- أضف أيقونة المستخدم مع القائمة المنسدلة -->
+
+
             <div class="dropdown">
                 <a href="#" class="dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-user white-icon"></i>
@@ -71,9 +72,9 @@
                     </li>
                     @else
                     <li>
-                        <span class="dropdown-item">
+                        <a href={{url('/user/index')}}><span class="dropdown-item">
                             {{ Auth::user()->name }}
-                        </span>
+                        </span></a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -90,6 +91,7 @@
                 </ul>
             </div>
 </nav>
+
             <a href="/book" class="book-a-table-btn scrollto d-none d-lg-flex">Book a table</a>
 
         </div>

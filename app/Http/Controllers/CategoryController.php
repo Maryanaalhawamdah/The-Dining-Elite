@@ -19,10 +19,11 @@ class CategoryController extends Controller
         public function index()
         {
             $categories = Category::all();
-            return view('home.navbar', compact('categories'));
-         
+            return view('home.category', compact('categories'));
+
 
         }
+
 
 
     /**

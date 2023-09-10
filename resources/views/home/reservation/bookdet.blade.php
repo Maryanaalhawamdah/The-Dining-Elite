@@ -115,7 +115,7 @@ p{
       grid-template-columns: 1fr;
       width: 345px;
       height: 610px;
-      margin-top: 90%;
+      margin-top:20%;
     }
 
     img{

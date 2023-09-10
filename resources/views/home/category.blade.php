@@ -59,13 +59,11 @@
         </a>
     </li>
 <ul class="res">
-    @foreach($resturants as $restaurant)
+    @foreach($categories as $category)
     <li style="list-style: none">
-        <a href="{{url('resdetail',$restaurant->id)}}">
+        {{-- <a href="{{url('resdetail',$category->id)}}"> --}}
        <div class="card">
-            <img src="{{ $restaurant->image}}"
-             alt="{{ $restaurant->name }}">
-            <h2>{{ $restaurant->name }}</h2>
+            <h2>{{ $category->name }}</h2>
 
         </div></a>
     </li>

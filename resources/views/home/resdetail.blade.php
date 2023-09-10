@@ -139,6 +139,7 @@ img{
 
     .cart-btn {
         height: 48px;
+        margin-top:100px;
     }
   }</style>
 

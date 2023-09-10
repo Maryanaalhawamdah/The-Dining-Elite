@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use Illuminate\Http\Request;
 use App\Models\softDeletes;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,7 @@ class AdminController extends Controller
     public function index()
     {
         $Admins = Admin::all();
-        return view ('admin.sidebar.admin')->with('Admins', $Admins);
+        return view ('admin.admin.index' , compact('Admins'));
     }
 
     /**
@@ -26,7 +27,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.add.admin');
+        return view('admin.admin.add');    
     }
 
     /**
@@ -37,9 +38,16 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        Admin::create($input);
-        return redirect('Admin')->with('flash_message', 'Admin Addedd!'); 
+        $hashedPassword = Hash::make($request->password);
+        Admin::create([
+            // "Database Colum"=>"Request Input",
+            "name" => $request->name,
+            "email" => $request->email,
+            "password" => $hashedPassword,
+        ]);
+                // return response(' The Student Add Successfully');
+
+        return redirect()->route('Admin.index');
     }
 
     /**
@@ -63,8 +71,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $Admin = Admin::find($id);
-        return view('admin.edit.user')->with('Admins', $Admin);
+        $Admin = Admin::findorFail($id);
+        return view('admin.admin.edit' , compact('Admin'));
     }
 
     /**
@@ -79,7 +87,7 @@ class AdminController extends Controller
         $Admin = Admin::find($id);
         $input = $request->all();
         $Admin->update($input);
-        return redirect('admin.sidebar.admin')->with('flash_message', 'Admin Updated!'); 
+        return redirect('Admin')->with('flash_message', 'Admin Updated!'); 
     }
 
     /**
@@ -88,9 +96,9 @@ class AdminController extends Controller
      * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
         Admin::destroy($id);
-        return redirect()->route('admin.sidebar.admin');
+        return redirect()->route('Admin.index');
     }
 }

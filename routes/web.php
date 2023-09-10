@@ -3,12 +3,9 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminRoutingController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminResturantController;
-use App\Http\Controllers\profileController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -26,85 +23,15 @@ Route::get('/main', function () {
 });
 
 //  Admin Panel /////
-Route::resource("/admin-layout", AdminController::class);
-Route::resource("/admin-layout", AdminUserController::class);
-Route::resource("/admin-layout", AdminResturantController::class);
+Route::get('/admin/layout', function () {
+    return view('admin.layout');
+})->middleware('auth');
+Route::resource("Admin", AdminController::class)->middleware('auth');
+Route::resource("User", AdminUserController::class)->middleware('auth');
+Route::resource("Restaurant", AdminResturantController::class)->middleware('auth');
+Route::resource("Reservation", AdminReservationController::class)->middleware('auth');
+////////////////////
 
-// Route::resource("/admin-layout", AdminRoutingController::class);
-
-Route::get('/admin-layout', function () {
-    return view ('admin.layout');
-});
-
-Route::get('/admin-admin', function () {
-    return view ('admin.sidebar.admin');
-});
-
-Route::get('/admin-user', function () {
-    return view ('admin.sidebar.user');
-});
-
-Route::get('/admin-category', function () {
-    return view ('admin.sidebar.category');
-});
-
-Route::get('/admin-reservation', function () {
-    return view ('admin.sidebar.reservation');
-});
-
-Route::get('/admin-restaurant', function () {
-    return view ('admin.sidebar.restaurant');
-});
-
-Route::get('/admin-dashboard', function () {
-    return view ('admin.sidebar.dashboard');
-});
-
-////////////////////////////////////
-
-Route::get('/admin-edit-admin', function () {
-    return view ('admin.edit.admin');
-});
-
-Route::get('/admin-edit-user', function () {
-    return view ('admin.edit.user');
-});
-
-Route::get('/admin-edit-category', function () {
-    return view ('admin.edit.category');
-});
-
-Route::get('/admin-edit-reservation', function () {
-    return view ('admin.edit.reservation');
-});
-
-Route::get('/admin-edit-restaurant', function () {
-    return view ('admin.edit.restaurant');
-});
-
-////////////////////////////////////
-
-Route::get('/admin-add-admin', function () {
-    return view ('admin.add.admin');
-});
-
-Route::get('/admin-add-user', function () {
-    return view ('admin.add.user');
-});
-
-Route::get('/admin-add-category', function () {
-    return view ('admin.add.category');
-});
-
-Route::get('/admin-add-reservation', function () {
-    return view ('admin.add.reservation');
-});
-
-Route::get('/admin-add-restaurant', function () {
-    return view ('admin.add.restaurant');
-});
-
-/////////////////////////////////
 
 
 Route::get('/about', function () {

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AdminReservation;
+use App\Models\softDeletes;
 use Illuminate\Http\Request;
+use App\Models\AdminReservation;
+use Illuminate\Support\Facades\Hash;
 
 class AdminReservationController extends Controller
 {
@@ -14,8 +16,8 @@ class AdminReservationController extends Controller
      */
     public function index()
     {
-        $reservations= AdminReservation::all();
-        return view ('admin.sidebar.reservation')->with('reservations', $reservations); 
+        $Reservations = AdminReservation::all();
+        return view ('admin.reservation.index' , compact('Reservations'));
     }
 
     /**
@@ -25,7 +27,7 @@ class AdminReservationController extends Controller
      */
     public function create()
     {
-        return view('admin.add.reservation'); 
+        return view('admin.reservation.add'); 
     }
 
     /**
@@ -36,9 +38,20 @@ class AdminReservationController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        AdminReservation::create($input);
-        return redirect('reservations')->with('flash_message', 'reservation Addedd!'); 
+        $hashedPassword = Hash::make($request->password);
+        AdminReservation::create([
+            // "Database Colum"=>"Request Input",
+            "name" => $request->name,
+            "email" => $request->email,
+            "phone" => $request->phone,
+            "message" => $request->message,
+            "restaurant" => $request->restaurant,
+            "guest_number" => $request->guest_number,
+            "res_date" => $request->res_date,
+        ]);
+                // return response(' The Student Add Successfully');
+
+        return redirect()->route('Reservation.index'); 
     }
 
     /**
@@ -47,11 +60,11 @@ class AdminReservationController extends Controller
      * @param  \App\Models\AdminReservation  $adminReseration
      * @return \Illuminate\Http\Response
      */
-    public function show(AdminReservation $adminReservation , $id)
+    public function show(Request $request, $id)
     {
-        $reservations = AdminReservation::onlyTrashed()->get();
-        return view('reservations.softdelete' , compact('reservations'));
-        return $reservations;
+        $Reservation = AdminReservation::onlyTrashed()->get();
+        return view('Reservation.softdelete' , compact('Reservation'));
+        return $Reservation;
     }
 
     /**
@@ -60,10 +73,10 @@ class AdminReservationController extends Controller
      * @param  \App\Models\AdminReservation  $adminReservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdminReservation $adminReservation)
+    public function edit($id)
     {
-        $Reservations = AdminReservations::find($id);
-        return view('Reservations.edit')->with('Reservations', $Reservations);
+        $Reservation = AdminReservation::findorFail($id);
+        return view('admin.reservation.edit' , compact('Reservation'));
     }
 
     /**
@@ -73,12 +86,12 @@ class AdminReservationController extends Controller
      * @param  \App\Models\AdminReseration  $adminReseration
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AdminReservation $adminReservation)
+    public function update(Request $request, $id)
     {
-        $Reservations = AdminReservations::find($id);
+        $Reservation = AdminReservation::find($id);
         $input = $request->all();
-        $student->update($input);
-        return redirect('Reservations')->with('flash_message', 'Reservations Updated!');
+        $Reservation->update($input);
+        return redirect('Reservation')->with('flash_message', 'Reservation Updated!');
     }
 
     /**
@@ -87,9 +100,9 @@ class AdminReservationController extends Controller
      * @param  \App\Models\AdminReservation  $adminReservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminReservation $adminReservation)
+    public function destroy($id)
     {
-        AdminReservations::destroy($id);
-        return redirect()->route('admin.sidebar.reservation');
+        AdminReservation::destroy($id);
+        return redirect()->route('Reservation.index');
     }
 }

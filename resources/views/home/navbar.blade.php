@@ -71,9 +71,9 @@
                     </li>
                     @else
                     <li>
-                        <span class="dropdown-item">
+                        <a href={{url('/user/index')}}><span class="dropdown-item">
                             {{ Auth::user()->name }}
-                        </span>
+                        </span></a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{ route('logout') }}"

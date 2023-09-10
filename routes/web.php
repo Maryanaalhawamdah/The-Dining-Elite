@@ -2,7 +2,6 @@
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Auth\LoginRegisterController;
-use App\Http\Controllers\ResturantController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRoutingController;
 use App\Http\Controllers\AdminController;
@@ -137,7 +136,6 @@ Route::controller(LoginRegisterController::class)->group(function() {
 
 
 Route::resource("/reservation", ReservationController::class);
-Route::resource("/categories", CategoryController::class);
 
 
 

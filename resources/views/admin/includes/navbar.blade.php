@@ -193,6 +193,9 @@
                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                     Logout
                 </a>
+                  {{Form::open(array('action'=>'TopicsController@searchquery', 'method'=>'GET'))}}      
+                  {{Form::input('search', 'q', null, ['placeholder'=>'Search', 'class' => 'search'])}}
+                  {{Form::close()}}
             </div>
         </li>
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminResturantController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -146,3 +147,4 @@ Route::get('/resturants','Page' )->name('Page');
 });
 
 Route::get("/resdetail/{id}",[ResturantController::class,'Pagedetail']);
+
